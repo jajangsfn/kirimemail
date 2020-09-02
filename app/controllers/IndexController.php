@@ -27,7 +27,7 @@ class IndexController extends ControllerBase
         );
         
         if (!is_null($covid)) {
-            $last_summary = intval( $post['summary'] );
+            $last_summary = intval( $covid->summary ) + intval( $post['summary'] );
             
             $covid->id      = $covid->id;
             $covid->summary = $last_summary;
@@ -70,6 +70,32 @@ class IndexController extends ControllerBase
         
         $this->view->covid = $covid;
         $this->view->province = $province;
+    }
+
+    public function updateAction()
+    {
+        $post = $this->request->getPost();
+
+        $covid = new Covid();
+        $covid->id = $post['id'];
+        $covid->id_province = $post['province'];
+        $covid->summary     = $post['summary'];
+
+        if ($covid->save()) {
+            $message    = "Berhasil memperbaharui"; 
+            $alert      = "success";
+        }else {
+            $message    = "Gagal memperbaharui";
+            $alert      = "danger";
+        }
+
+        $res = new Response;
+
+        $_SESSION['message'] = $message;
+        $_SESSION['alert'] = $alert;
+
+        
+        return $res->redirect("kirimemail/index");
     }
 
     public function deleteAction($id)

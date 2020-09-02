@@ -6,7 +6,8 @@
                 <div class="card-header bg-success text-light">
                     <h3>Edit Data Covid</h3>
                 </div>
-                <?php echo $this->tag->form("kirimemail/index/save"); ?>
+                <?php echo $this->tag->form("kirimemail/index/update"); ?>
+                <input type="hidden" name="id" value="<?=$covid->id?>">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="province">Provinsi</label>
