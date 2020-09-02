@@ -27,7 +27,7 @@ class IndexController extends ControllerBase
         );
         
         if (!is_null($covid)) {
-            $last_summary = intval( $covid->summary ) + intval( $post['summary'] );
+            $last_summary = intval( $post['summary'] );
             
             $covid->id      = $covid->id;
             $covid->summary = $last_summary;
