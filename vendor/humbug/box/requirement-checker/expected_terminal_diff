@@ -1,0 +1,44 @@
+4c4
+<  * This file is part of the Symfony package.
+---
+>  * This file is part of the box project.
+6c6,7
+<  * (c) Fabien Potencier <fabien@symfony.com>
+---
+>  * (c) Kevin Herrera <kevin@herrera.io>
+>  *     Théo Fidry <theo.fidry@gmail.com>
+8,9c9,10
+<  * For the full copyright and license information, please view the LICENSE
+<  * file that was distributed with this source code.
+---
+>  * This source file is subject to the MIT license that is bundled
+>  * with this source code in the file LICENSE.
+12c13
+< namespace Symfony\Component\Console;
+---
+> namespace KevinGH\RequirementChecker;
+13a15,20
+> /**
+>  * This file is copy/pasted from the Symfony project to avoid a dependency on `symfony/console` which would be too big for just using this
+>  * class.
+>  *
+>  * @license MIT (c) Fabien Potencier <fabien@symfony.com>
+>  */
+122c129
+<         return [(int) $matches[2], (int) $matches[1]];
+---
+>         return array((int) $matches[2], (int) $matches[1]);
+146,149c153,156
+<         $descriptorspec = [
+<             1 => ['pipe', 'w'],
+<             2 => ['pipe', 'w'],
+<         ];
+---
+>         $descriptorspec = array(
+>             1 => array('pipe', 'w'),
+>             2 => array('pipe', 'w'),
+>         );
+151c158
+<         $process = proc_open($command, $descriptorspec, $pipes, null, null, ['suppress_errors' => true]);
+---
+>         $process = proc_open($command, $descriptorspec, $pipes, null, null, array('suppress_errors' => true));

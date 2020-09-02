@@ -1,0 +1,36 @@
+<div class="mt-5">
+    <div class="container row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-success text-light">
+                    <h3>Edit Data Covid</h3>
+                </div>
+                <?php echo $this->tag->form("kirimemail/index/save"); ?>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="province">Provinsi</label>
+                        <select name="province" class="form-control" id="provice" required>
+                            <option value="">Pilih Provinsi</option>
+                            <?php
+                            foreach($province as $prov) { ?>
+                                <option value="<?=$prov->id?>" <?=isset($covid) && $covid->id_province == $prov->id ? "selected" : "";?>><?=$prov->province?></option>
+                            <?php }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Jumlah</label>
+                        <input type="number" name="summary" id="summary" class="form-control" min="1" required value="<?=$covid->summary?>"/>
+                    </div>
+                </div>
+                <div class="card-footer">
+                   <?php
+                   echo $this->tag->linkTo(["kirimemail/index", "Cancel", 'class' => 'btn btn-default']);
+                   ?>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+                </form>
+        </div>
+    </div>
+</div>
